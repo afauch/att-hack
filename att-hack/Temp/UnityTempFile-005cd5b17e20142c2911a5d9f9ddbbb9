@@ -92,6 +92,8 @@
 'Assets/MidiJack/MidiDriver.cs'
 'Assets/MidiJack/MidiMaster.cs'
 'Assets/MidiJack/MidiStateUpdater.cs'
+'Assets/Scripts/KnobListener.cs'
+'Assets/Scripts/MidiEventListener.cs'
 -r:'/Applications/Unity56/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity56/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
 -r:'/Applications/Unity56/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.dll'
