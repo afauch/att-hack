@@ -5,14 +5,13 @@ using MidiJack;
 
 public class Note : MonoBehaviour {
 
-	private Board _board;
-	private MidiChannel _midiChannel;
-	[SerializeField] private int _midiChannelInt;
-	[SerializeField] private int _note;
-	private GameObject _gameObject;
+	public Board _board;
+	public MidiChannel _midiChannel;
+	public int _midiChannelInt;
+	public int _note;
+	public GameObject _gameObject;
 
-	// Use this for initialization
-	void Start () {
+	public void InitNote () {
 
 		InitializeGameObject ();
 
@@ -22,11 +21,6 @@ public class Note : MonoBehaviour {
 		// Cast the int as a MidiChannel.
 		_midiChannel = (MidiChannel)(_midiChannelInt - 1);
 
-		// TODO: Temporary, delete, a Note should be instantiated by a Board
-		if (_board == null) {
-			_board = GetComponentInParent<Board> ();
-		}
-		
 	}
 
 	private void InitializeGameObject () {

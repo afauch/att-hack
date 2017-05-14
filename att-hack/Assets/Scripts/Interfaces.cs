@@ -14,6 +14,13 @@ public enum InputType {
 
 }
 
+public enum Format {
+
+	Grid,
+	Line
+
+}
+
 // Interaces
 public interface IOutputModule {
 

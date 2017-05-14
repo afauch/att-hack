@@ -27,7 +27,7 @@ public class ParticleWeight : MonoBehaviour, IOutputModule {
 	private void SetBoardParticleWeight(float value) {
 
 		Rigidbody r = _board._particlePrefab.GetComponent<Rigidbody> ();
-		r.mass = Mathf.Lerp (0.01f, 1000.0f, value);
+		r.mass = Mathf.Lerp (0.01f, 10000.0f, value);
 		r.drag = Mathf.Lerp (10.0f, 0.0f, value);
 	}
 

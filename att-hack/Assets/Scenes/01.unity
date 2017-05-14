@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6368955, g: 0.808603, b: 0.38166085, a: 1}
+  m_IndirectSpecularColor: {r: 0.6368955, g: 0.4508131, b: 0.8398823, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 79253532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: 0}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 0.01, y: 1, z: 0.01}
   m_Children:
   - {fileID: 1770757947}
@@ -2111,7 +2111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &468875128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2123,8 +2123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c9d5dd1420f4c27a238b30e4583455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 0}
+  _midiChannel: 0
   _midiChannelInt: 1
   _note: 64
+  _gameObject: {fileID: 0}
 --- !u!4 &468875129
 Transform:
   m_ObjectHideFlags: 0
@@ -3371,7 +3374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &712490387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3383,8 +3386,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c9d5dd1420f4c27a238b30e4583455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 0}
+  _midiChannel: 0
   _midiChannelInt: 1
   _note: 62
+  _gameObject: {fileID: 0}
 --- !u!4 &712490388
 Transform:
   m_ObjectHideFlags: 0
@@ -3785,7 +3791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &747371127
 Transform:
   m_ObjectHideFlags: 0
@@ -3810,8 +3816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c9d5dd1420f4c27a238b30e4583455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 0}
+  _midiChannel: 0
   _midiChannelInt: 1
   _note: 60
+  _gameObject: {fileID: 0}
 --- !u!1 &765624382
 GameObject:
   m_ObjectHideFlags: 0
@@ -8402,6 +8411,9 @@ MonoBehaviour:
   _particlePrefab: {fileID: 1389899079378870, guid: ece4e1d7c208749dda3fa8be6b0544af,
     type: 2}
   _particleMaterial: {fileID: 2100000, guid: 0f46af70e0dca4103b6939084989067c, type: 2}
+  _channel: 1
+  _format: 1
+  _spacing: 0.1
   _velocityToSize: 0
   _velocityToColor: 0
   _velocityToOpacity: 0
@@ -8801,7 +8813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1866225993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8813,8 +8825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c9d5dd1420f4c27a238b30e4583455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 0}
+  _midiChannel: 0
   _midiChannelInt: 1
   _note: 65
+  _gameObject: {fileID: 0}
 --- !u!4 &1866225994
 Transform:
   m_ObjectHideFlags: 0
@@ -9412,7 +9427,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2048526294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: -15, z: 0}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children:
   - {fileID: 79253533}
