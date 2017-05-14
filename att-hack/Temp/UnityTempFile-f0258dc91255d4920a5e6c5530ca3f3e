@@ -88,12 +88,15 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
+'Assets/IoConnector.cs'
 'Assets/MidiJack/Midi.cs'
 'Assets/MidiJack/MidiDriver.cs'
 'Assets/MidiJack/MidiMaster.cs'
 'Assets/MidiJack/MidiStateUpdater.cs'
-'Assets/Scripts/KnobListener.cs'
+'Assets/Scripts/Knob.cs'
+'Assets/Scripts/LightIntensity.cs'
 'Assets/Scripts/MidiEventListener.cs'
+'Assets/Scripts/MidiInput.cs'
 -r:'/Applications/Unity56/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity56/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
 -r:'/Applications/Unity56/Unity.app/Contents/Mono/lib/mono/unity/UnityScript.dll'

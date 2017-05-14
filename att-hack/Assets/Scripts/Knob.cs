@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MidiJack;
 
-public class KnobListener : MonoBehaviour {
+public class Knob : MonoBehaviour {
 
 	private const string _idLabelName = "id_label";
 	private const string _valLabelName = "val_label";
@@ -17,7 +17,9 @@ public class KnobListener : MonoBehaviour {
 	private TextMesh _idLabel;
 	private TextMesh _valLabel;
 
-	// 
+	// Create an event that other modules can subscribe to when this input changes
+	public delegate void ValueChange(float value);
+	public event ValueChange OnValueChange;
 
 	void Start () {
 
@@ -60,6 +62,13 @@ public class KnobListener : MonoBehaviour {
 
 			_knobValue = knobValue;
 			UpdateValue ();
+
+			// are any modules subcribed to this event?
+			if (OnValueChange != null) {
+				// then call OnValueChange which will populate to all subscribers
+				OnValueChange (_knobValue);
+			}
+
 
 		}
 
