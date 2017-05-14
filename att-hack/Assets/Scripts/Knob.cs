@@ -13,6 +13,8 @@ public class Knob : MonoBehaviour {
 	public int _knobNumber;
 	private float _knobValue;
 
+	public Transform _nodeTransform;
+
 	private GameObject _gameObject;
 	private TextMesh _idLabel;
 	private TextMesh _valLabel;
@@ -33,9 +35,13 @@ public class Knob : MonoBehaviour {
 
 	}
 
+	// Takes care of GameObject initialization
+	// like labels and transforms
 	void InitializeGameObject() {
 
 		_gameObject = this.gameObject;
+		_nodeTransform = GetComponentInChildren<NodeConnector> ().gameObject.transform;
+
 		TextMesh[] tm = _gameObject.GetComponentsInChildren<TextMesh> ();
 
 		foreach (TextMesh t in tm) {
@@ -68,8 +74,7 @@ public class Knob : MonoBehaviour {
 				// then call OnValueChange which will populate to all subscribers
 				OnValueChange (_knobValue);
 			}
-
-
+				
 		}
 
 	}
@@ -79,6 +84,5 @@ public class Knob : MonoBehaviour {
 		_valLabel.text = _knobValue.ToString();
 
 	}
-		
 
 }
