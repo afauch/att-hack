@@ -51,6 +51,8 @@ public class IoConnector : MonoBehaviour {
 	// Click Handling - meat of logic is in OnSelect
 	private void OnClick() {
 
+		SelectionInteraction._instance.Play ();
+
 		//create a ray cast and set it to the mouses cursor position in game
 		float distance = 50.0f; // this might need to be tweaked
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -59,7 +61,8 @@ public class IoConnector : MonoBehaviour {
 			OnSelect (hit.transform.gameObject);
 		} else {
 			// if no hit
-			DestroyLine ();
+			if(_inputSelected)
+				DestroyLine ();
 		}
 	}
 
