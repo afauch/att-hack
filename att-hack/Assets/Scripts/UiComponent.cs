@@ -12,7 +12,6 @@ public class UiComponent : MonoBehaviour {
 	private Color _linesReferenceColor;
 
 	private float _lerpTime;
-
 	private float _randomOffset;
 
 	// Use this for initialization
@@ -22,7 +21,7 @@ public class UiComponent : MonoBehaviour {
 		StateManager.OnUiToggle += OnUiToggle;
 		_lerpTime = StateManager._instance._lerpTime;
 
-		_randomOffset = Random.Range (0.0f,0.5f);
+		_randomOffset = Random.Range (0.0f,0.3f);
 		
 	}
 
