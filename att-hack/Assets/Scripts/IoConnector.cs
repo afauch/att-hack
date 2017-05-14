@@ -96,8 +96,6 @@ public class IoConnector : MonoBehaviour {
 
 		SelectionInteraction._instance.Play (g);
 
-		print ("SELECT START CALLED");
-
 		_tempStartNode = g;
 		_tempStartObject = g.transform.parent.gameObject;
 

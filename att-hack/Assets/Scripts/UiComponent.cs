@@ -59,13 +59,6 @@ public class UiComponent : MonoBehaviour {
 
 		}
 
-		// Fade any associated lines out
-//		lines = GetComponentsInChildren<IoLine>();
-//		for(int i = 0; i < lines.Length; i++) {
-//			_referenceLineColors[i] = lines[i]._material.GetColor ("_Color");
-//			StartCoroutine(LerpHelper.ColorFade(lines[i]._material,Color.clear,_lerpTime, "Quintic"));
-//		}
-
 	}
 
 	void Show () {

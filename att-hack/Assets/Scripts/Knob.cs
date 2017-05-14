@@ -13,7 +13,7 @@ public class Knob : MonoBehaviour {
 	public int _knobNumber;
 	private float _knobValue;
 
-	public Transform _nodeTransform;
+	private Transform _nodeTransform;
 
 	private GameObject _gameObject;
 	private TextMesh _idLabel;

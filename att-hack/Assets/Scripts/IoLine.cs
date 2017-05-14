@@ -49,8 +49,6 @@ public class IoLine : MonoBehaviour {
 		
 	public void BeginLine(GameObject startPos) {
 
-		print ("BEGINLINE CALLED");
-
 		_lr.positionCount = 2;
 
 		// TODO: Clean this up, make more generic
@@ -71,11 +69,7 @@ public class IoLine : MonoBehaviour {
 
 	void Update () {
 
-		// print ("UPDATE");
-
 		if (_lr != null && _isDrawing) {
-		
-			print ("IS DRAWING");
 
 			Vector3 mousePos = Input.mousePosition;
 			mousePos.z = Camera.main.nearClipPlane;

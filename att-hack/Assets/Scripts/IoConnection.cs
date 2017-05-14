@@ -24,11 +24,15 @@ public class IoConnection {
 	public void Init () {
 
 		// Register the output for the input's event listeners
+		// ## THIS IS THE CORE BIT OF LINKING CODE ##
 		_output.GetComponent<IOutputModule>().SubscribeToInput(_input.GetComponent<Knob>());
 
 		// Register for OnMove events from both of the GameObjects
 		_input.GetComponent<DragObject>().OnMove += OnMove;
 		_output.GetComponent<DragObject>().OnMove += OnMove;
+		_input.GetComponent<Hover> ().OnMove += OnMove;
+		_output.GetComponent<Hover> ().OnMove += OnMove;
+
 
 	}
 
