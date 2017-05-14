@@ -327,9 +327,9 @@ public class LerpHelper
 	}
 
 
-	public static IEnumerator ColorFade(Material m, Color c, float time, string ease) {
+	public static IEnumerator ColorFade(Material m, Color c, float time, string ease, float delay) {
 
-		// Debug.Log ("ColorFade Called");
+		yield return new WaitForSeconds (delay);
 
 		// elapsedTime
 		float elapsedTime = 0;
@@ -383,6 +383,68 @@ public class LerpHelper
 			Color currentColor = Color.Lerp (startColor, endColor, t);
 			// Debug.Log (currentColor.ToString());
 			m.SetColor ("_Color", currentColor);
+			yield return null;
+
+		}
+
+	}
+
+	public static IEnumerator ColorFade(Material m, Color c, float time, string ease, string property) {
+
+		// Debug.Log ("ColorFade Called");
+
+		// elapsedTime
+		float elapsedTime = 0;
+
+		Color startColor = m.GetColor (property);
+		Color endColor = c;
+
+		while (elapsedTime < time)
+		{
+
+			// this lerps color
+			float t = elapsedTime / time;
+
+			switch (ease) {
+			case "Back":
+				t = Easing.Back.InOut (t);
+				break;
+			case "Bounce":
+				t = Easing.Bounce.InOut (t);
+				break;
+			case "Circular":
+				t = Easing.Circular.InOut (t);
+				break;
+			case "Cubic":
+				t = Easing.Cubic.InOut (t);
+				break;
+			case "Elastic":
+				t = Easing.Elastic.InOut (t);
+				break;
+			case "Exponential":
+				t = Easing.Exponential.InOut (t);
+				break;
+			case "Linear":
+				t = Easing.Linear(t);
+				break;
+			case "Quadratic":
+				t = Easing.Quadratic.InOut(t);
+				break;
+			case "Quartic":
+				t = Easing.Quartic.InOut(t);
+				break;
+			case "Quintic":
+				t = Easing.Quintic.InOut(t);
+				break;
+			default:
+				t = Easing.Cubic.InOut(t);
+				break;
+			}
+
+			elapsedTime += Time.deltaTime;
+			Color currentColor = Color.Lerp (startColor, endColor, t);
+			// Debug.Log (currentColor.ToString());
+			m.SetColor (property, currentColor);
 			yield return null;
 
 		}

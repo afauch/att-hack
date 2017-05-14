@@ -101,21 +101,22 @@ public class IoConnector : MonoBehaviour {
 		_tempStartNode = g;
 		_tempStartObject = g.transform.parent.gameObject;
 
-		_tempLineObject = new GameObject ();
-		_tempLineObject.transform.SetParent (g.transform);
-		IoLine line = _tempLineObject.AddComponent<IoLine> ();
-		_tempLine = line;
 
-		// Create a new GameObject
-		line.Init(_tempLineObject, _lineWidth, _lineColor, g);
+		if (CheckValidStartConnection (_tempStartObject)) {
 
-		// Is this input or output?
-		if (_tempStartObject.GetComponent<IOutputModule> () != null) {
-			_tempOutputObject = _tempStartObject;
-		} else if (_tempStartObject.GetComponent<Knob> () != null) { // TODO: Change this to a generic Input interface
-			_tempInputObject = _tempStartObject;
+			_tempLineObject = new GameObject ();
+			_tempLineObject.transform.SetParent (g.transform);
+			IoLine line = _tempLineObject.AddComponent<IoLine> ();
+			_tempLine = line;
+
+			// Create a new GameObject to hold the line
+			line.Init (_tempLineObject, _lineWidth, _lineColor, g);
+
 		} else {
+
 			Debug.Log ("Not a valid input/output");
+			DestroyLine ();
+
 		}
 
 	}
@@ -130,7 +131,7 @@ public class IoConnector : MonoBehaviour {
 		print ("SELECT END CALLED");
 
 		_tempLine.EndLine (g);
-		if (CheckValidConnection (_tempStartObject, _tempEndObject)) {
+		if (CheckValidEndConnection (_tempStartObject, _tempEndObject)) {
 
 			// check which is which and create a new connection
 			print("Valid connection");
@@ -145,7 +146,25 @@ public class IoConnector : MonoBehaviour {
 	}
 
 
-	private bool CheckValidConnection(GameObject start, GameObject end) {
+	private bool CheckValidStartConnection (GameObject start) {
+
+		// Is this a valid input or output node?
+		if (start.GetComponent<IOutputModule> () != null) {
+			print ("HAS AN IOUTPUT MODULE");
+			_tempOutputObject = start;
+			return true;
+		} else if (start.GetComponent<Knob> () != null) { // TODO: Change this to a generic Input interface
+			_tempInputObject = start;
+			return true;
+		} else {
+			Debug.Log ("Not a valid input/output");
+			return false;
+		}
+
+	}
+
+
+	private bool CheckValidEndConnection(GameObject start, GameObject end) {
 
 		// If we already have an input object
 		if (_tempInputObject != null) {

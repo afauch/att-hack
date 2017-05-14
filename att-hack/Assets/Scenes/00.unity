@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.25300264, g: 0.25300264, b: 0.25300264, a: 1}
+  m_IndirectSpecularColor: {r: 0.39698222, g: 0.39698222, b: 0.7304705, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 61004350}
   - component: {fileID: 61004349}
   - component: {fileID: 61004351}
+  - component: {fileID: 61004352}
   m_Layer: 0
   m_Name: Knob-01 (2)
   m_TagString: Untagged
@@ -183,6 +184,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 200ee83db744340458980715da0811f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &61004352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 61004347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &152505255
@@ -550,6 +562,7 @@ GameObject:
   - component: {fileID: 421109090}
   - component: {fileID: 421109089}
   - component: {fileID: 421109092}
+  - component: {fileID: 421109093}
   m_Layer: 0
   m_Name: Knob-01
   m_TagString: Untagged
@@ -616,6 +629,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200ee83db744340458980715da0811f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &421109093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421109088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &487016907
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +652,7 @@ GameObject:
   - component: {fileID: 487016910}
   - component: {fileID: 487016909}
   - component: {fileID: 487016911}
+  - component: {fileID: 487016912}
   m_Layer: 0
   m_Name: Knob-01 (1)
   m_TagString: Untagged
@@ -694,6 +719,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200ee83db744340458980715da0811f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &487016912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 487016907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &598725406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 598725407}
+  - component: {fileID: 598725408}
+  m_Layer: 0
+  m_Name: StateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598725407
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598725406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.59999996, y: 1.8699999, z: -6.2299995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &598725408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598725406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7622ef0762d354b1c9600de2a06f1b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lerpTime: 1
 --- !u!1 &691273315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1380,7 @@ GameObject:
   - component: {fileID: 1063336962}
   - component: {fileID: 1063336964}
   - component: {fileID: 1063336965}
+  - component: {fileID: 1063336963}
   m_Layer: 0
   m_Name: LightIntensity
   m_TagString: Untagged
@@ -1342,6 +1420,17 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
+--- !u!114 &1063336963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1063336960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1063336964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2053,6 +2142,7 @@ GameObject:
   - component: {fileID: 1673269912}
   - component: {fileID: 1673269911}
   - component: {fileID: 1673269910}
+  - component: {fileID: 1673269913}
   m_Layer: 0
   m_Name: SkyboxColorB
   m_TagString: Untagged
@@ -2115,6 +2205,17 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
+--- !u!114 &1673269913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1673269908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1689462883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2200,6 +2301,7 @@ GameObject:
   - component: {fileID: 1702672328}
   - component: {fileID: 1702672327}
   - component: {fileID: 1702672326}
+  - component: {fileID: 1702672329}
   m_Layer: 0
   m_Name: SkyboxColorG
   m_TagString: Untagged
@@ -2262,6 +2364,17 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
+--- !u!114 &1702672329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1702672324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1716990248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2669,7 @@ GameObject:
   - component: {fileID: 1793569204}
   - component: {fileID: 1793569203}
   - component: {fileID: 1793569202}
+  - component: {fileID: 1793569205}
   m_Layer: 0
   m_Name: SkyboxColorR
   m_TagString: Untagged
@@ -2618,6 +2732,17 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
+--- !u!114 &1793569205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1793569200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1817222523
 GameObject:
   m_ObjectHideFlags: 0

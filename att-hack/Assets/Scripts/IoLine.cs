@@ -7,7 +7,7 @@ public class IoLine : MonoBehaviour {
 	public LineRenderer _lr;
 	private float _width;
 	private Color _color;
-	private Material _material;
+	public Material _material;
 
 	private GameObject _lineObject;
 	private Vector3 _prevPosition;
