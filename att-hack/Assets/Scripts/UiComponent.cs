@@ -13,12 +13,16 @@ public class UiComponent : MonoBehaviour {
 
 	private float _lerpTime;
 
+	private float _randomOffset;
+
 	// Use this for initialization
 	void Start () {
 
 		// Subscribe to the OnUiToggle Event
 		StateManager.OnUiToggle += OnUiToggle;
 		_lerpTime = StateManager._instance._lerpTime;
+
+		_randomOffset = Random.Range (0.0f,0.5f);
 		
 	}
 
@@ -44,7 +48,7 @@ public class UiComponent : MonoBehaviour {
 		// first, save the current scale
 		_referenceScale = this.gameObject.transform.localScale;
 		// Make the UI disappear
-		StartCoroutine (LerpHelper.LerpScaleWithEasing (this.gameObject, this.gameObject.transform.localScale, Vector3.zero, _lerpTime, "Quintic", false, (0.7f * _lerpTime)));
+		StartCoroutine (LerpHelper.LerpScaleWithEasing (this.gameObject, this.gameObject.transform.localScale, Vector3.zero, _lerpTime, "Quintic", false, (0.7f * _lerpTime)+_randomOffset));
 
 		// if there are lines
 		if (this.gameObject.GetComponentInChildren<IoLine> () != null) {
@@ -63,7 +67,7 @@ public class UiComponent : MonoBehaviour {
 
 	void Show () {
 
-		StartCoroutine(LerpHelper.LerpScaleWithEasing (this.gameObject, this.gameObject.transform.localScale, _referenceScale, StateManager._instance._lerpTime, "Quintic", false, 0.0f));
+		StartCoroutine(LerpHelper.LerpScaleWithEasing (this.gameObject, this.gameObject.transform.localScale, _referenceScale, StateManager._instance._lerpTime, "Quintic", false, _randomOffset));
 
 		// Fade the lines in
 		StartCoroutine (LerpHelper.ColorFade (_linesSharedMaterial, _linesReferenceColor, _lerpTime, "Quintic", (0.7f * _lerpTime)));
