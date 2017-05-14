@@ -7,8 +7,10 @@ public class IoLine : MonoBehaviour {
 	public LineRenderer _lr;
 	private float _width;
 	private Color _color;
+	private Material _material;
 
 	private GameObject _lineObject;
+	private Vector3 _prevPosition;
 
 	private GameObject _start;
 	private GameObject _end;
@@ -31,8 +33,7 @@ public class IoLine : MonoBehaviour {
 		_color = color;
 
 		// Apply a standard diffuse material
-		Material whiteDiffuseMat = new Material(Shader.Find("Unlit/Texture"));
-		_lr.material = whiteDiffuseMat;
+		_lr.material = IoConnector._instance._lineMaterial;
 
 		_lr.startWidth = _width;
 		_lr.endWidth = _width;
@@ -82,6 +83,14 @@ public class IoLine : MonoBehaviour {
 			_lr.SetPosition (1, mouseWorld);
 
 		}
+
+
+	}
+
+	public void UpdateLinePositions () {
+
+		_lr.SetPosition (0, _start.transform.position);
+		_lr.SetPosition (1, _end.transform.position);
 
 	}
 

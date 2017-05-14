@@ -28,15 +28,12 @@ public class SelectionInteraction : MonoBehaviour {
 
 	}
 
-	public void Play () {
+	public void Play (GameObject g) {
 
 		// instantiate at click point
 		_audioSource.Play ();
 
-		Vector3 mousePos = Input.mousePosition;
-		mousePos.z = Camera.main.nearClipPlane;
-		Vector3 screenPoint = Camera.main.ScreenToWorldPoint (mousePos);
-		GameObject thisParticles = GameObject.Instantiate(_particles, screenPoint, Quaternion.identity);
+		GameObject thisParticles = GameObject.Instantiate(_particles, g.transform.position, Quaternion.identity);
 		ParticleSystem particles = thisParticles.GetComponent<ParticleSystem> ();
 		particles.Play ();
 

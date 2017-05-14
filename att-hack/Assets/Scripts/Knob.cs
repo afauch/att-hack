@@ -81,7 +81,7 @@ public class Knob : MonoBehaviour {
 
 	void UpdateValue() {
 
-		_valLabel.text = _knobValue.ToString();
+		_valLabel.text = _knobValue.ToString("0.00");
 
 	}
 

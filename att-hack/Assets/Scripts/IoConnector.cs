@@ -8,28 +8,28 @@ public class IoConnector : MonoBehaviour {
 	public static IoConnector _instance;
 	#endregion
 
-	public TextMesh _labelI;
-	public TextMesh _labelO;
-
 	public List<IoConnection> _connections;
 
-	private GameObject _tempInputNode;
-	private GameObject _tempOutputNode;
-	private GameObject _tempInputObject;										// use this to store the input temporarily before creating the IoConnection instance
-	private GameObject _tempOutputObject;										// use this to store the output temporarily before creating the IoConnection instance
+	private GameObject _tempStartNode;
+	private GameObject _tempEndNode;
+	private GameObject _tempStartObject;									// use this to store the input temporarily before creating the IoConnection instance
+	private GameObject _tempEndObject;										// use this to store the output temporarily before creating the IoConnection instance
 	private IoLine _tempLine;
 	private GameObject _tempLineObject;
 
+	private GameObject _tempInputObject;
+	private GameObject _tempOutputObject;
 
-	private bool _inputSelected;
+	private bool _startSelected;
 
 	[Header("Connector Formatting")]
 	[SerializeField] private float _lineWidth;
 	[SerializeField] private Color _lineColor;
+	public Material _lineMaterial;
 
 	void Awake () {
 		_instance = this;
-		_inputSelected = false;
+		_startSelected = false;
 	}
 
 	void Start () {
@@ -51,8 +51,6 @@ public class IoConnector : MonoBehaviour {
 	// Click Handling - meat of logic is in OnSelect
 	private void OnClick() {
 
-		SelectionInteraction._instance.Play ();
-
 		//create a ray cast and set it to the mouses cursor position in game
 		float distance = 50.0f; // this might need to be tweaked
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -61,7 +59,7 @@ public class IoConnector : MonoBehaviour {
 			OnSelect (hit.transform.gameObject);
 		} else {
 			// if no hit
-			if(_inputSelected)
+			if(_startSelected)
 				DestroyLine ();
 		}
 	}
@@ -73,33 +71,35 @@ public class IoConnector : MonoBehaviour {
 		if (g.CompareTag ("Node")) {
 
 			// If we haven't already selected an input
-			if (!_inputSelected) {
-				SelectInput (g);
-				_inputSelected = true;
+			if (!_startSelected) {
+				SelectStart (g);
+				_startSelected = true;
 			} else {
-				SelectOutput (g);
-				_inputSelected = false;
+				SelectEnd (g);
+				_startSelected = false;
 			}
 
 
 		} else {
 
 			print ("NOT A NODE");
-			DestroyLine ();
+			if (_startSelected) {
+				DestroyLine ();
+			}
 
 		}
 
 	}
 
 
-	public void SelectInput(GameObject g) {
+	public void SelectStart(GameObject g) {
 
-		print ("SELECT INPUT CALLED");
+		SelectionInteraction._instance.Play (g);
 
-		_tempInputNode = g;
-		_tempInputObject = g.transform.parent.gameObject;
+		print ("SELECT START CALLED");
 
-		_labelI.text = g.name;
+		_tempStartNode = g;
+		_tempStartObject = g.transform.parent.gameObject;
 
 		_tempLineObject = new GameObject ();
 		_tempLineObject.transform.SetParent (g.transform);
@@ -109,44 +109,84 @@ public class IoConnector : MonoBehaviour {
 		// Create a new GameObject
 		line.Init(_tempLineObject, _lineWidth, _lineColor, g);
 
-		// Assign for realtime management
-
+		// Is this input or output?
+		if (_tempStartObject.GetComponent<IOutputModule> () != null) {
+			_tempOutputObject = _tempStartObject;
+		} else if (_tempStartObject.GetComponent<Knob> () != null) { // TODO: Change this to a generic Input interface
+			_tempInputObject = _tempStartObject;
+		} else {
+			Debug.Log ("Not a valid input/output");
+		}
 
 	}
 
-	public void SelectOutput(GameObject g) {
+	public void SelectEnd(GameObject g) {
 
-		_tempOutputNode = g;
-		_tempOutputObject = g.transform.parent.gameObject;
+		SelectionInteraction._instance.Play (g);
 
-		print ("SELECT OUTPUT CALLED");
+		_tempEndNode = g;
+		_tempEndObject = g.transform.parent.gameObject;
 
-		_labelO.text = g.name;
+		print ("SELECT END CALLED");
+
 		_tempLine.EndLine (g);
+		if (CheckValidConnection (_tempStartObject, _tempEndObject)) {
 
-		// Create a new connection Instance and add it to the list
-		Debug.Log(string.Format("_tempInputObject is {0} and _tempOutputObject is {1}", _tempInputObject, _tempOutputObject));
-		IoConnection newConnection = new IoConnection(_tempInputObject, _tempOutputObject);
-		_connections.Add (newConnection);
+			// check which is which and create a new connection
+			print("Valid connection");
+			IoConnection newConnection = new IoConnection (_tempInputObject, _tempOutputObject, _tempLine);
+			_connections.Add (newConnection);
+
+		} else {
+			print ("Invalid connection, try again");
+			DestroyLine ();
+		}
 
 	}
+
+
+	private bool CheckValidConnection(GameObject start, GameObject end) {
+
+		// If we already have an input object
+		if (_tempInputObject != null) {
+			if (_tempEndObject.GetComponent<IOutputModule> () == null) {
+				print ("Not an output object");
+				return false;
+			} else {
+				_tempOutputObject = end;
+				return true;
+			}
+		} else if (_tempOutputObject != null) {
+			if (_tempEndObject.GetComponent<Knob> () == null) {
+				print ("Not an input object");
+				return false;
+			} else {
+				_tempInputObject = end;
+				return true;
+			}
+		} else {
+			return false;
+		}
+
+	}
+
 
 	private void DestroyLine () {
 
 		Destroy (_tempLineObject);
 		DestroyTempVars ();
-		_inputSelected = false;
+		_startSelected = false;
 
 	}
 
 	private void DestroyTempVars () {
 
-		_tempInputNode = null;
-		_tempInputObject = null;
+		_tempStartNode = null;
+		_tempStartObject = null;
 		_tempLine = null;
 		_tempLineObject = null;
-		_tempOutputNode = null;
-		_tempOutputObject = null;
+		_tempEndNode = null;
+		_tempEndObject = null;
 
 	}
 
