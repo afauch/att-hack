@@ -7,7 +7,7 @@ public class StageSpin : MonoBehaviour, IOutputModule {
 	public GameObject _stage;
 	private Rotate _rotate;
 
-	public void SubscribeToInput (Knob input) {
+	public void SubscribeToInput (IInputModule input) {
 
 		input.OnValueChange += UpdateStageRotation;
 

@@ -6,7 +6,7 @@ public class LightIntensity : MonoBehaviour, IOutputModule {
 
 	[SerializeField] private Light _light;
 
-	public void SubscribeToInput (Knob input) {
+	public void SubscribeToInput (IInputModule input) {
 
 		input.OnValueChange += UpdateLightIntensity;
 
@@ -14,7 +14,7 @@ public class LightIntensity : MonoBehaviour, IOutputModule {
 
 	void UpdateLightIntensity(float value) {
 
-		_light.intensity = value;
+		_light.intensity = Mathf.Lerp(0.0f, 3.0f,value);
 
 	}
 

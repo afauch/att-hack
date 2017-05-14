@@ -151,7 +151,7 @@ public class IoConnector : MonoBehaviour {
 			print ("HAS AN IOUTPUT MODULE");
 			_tempOutputObject = start;
 			return true;
-		} else if (start.GetComponent<Knob> () != null) { // TODO: Change this to a generic Input interface
+		} else if (start.GetComponent<IInputModule> () != null) { // TODO: Change this to a generic Input interface
 			_tempInputObject = start;
 			return true;
 		} else {
@@ -174,7 +174,7 @@ public class IoConnector : MonoBehaviour {
 				return true;
 			}
 		} else if (_tempOutputObject != null) {
-			if (_tempEndObject.GetComponent<Knob> () == null) {
+			if (_tempEndObject.GetComponent<IInputModule> () == null) {
 				print ("Not an input object");
 				return false;
 			} else {

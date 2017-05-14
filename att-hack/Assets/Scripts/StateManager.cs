@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StateManager : MonoBehaviour {
 
@@ -29,6 +30,12 @@ public class StateManager : MonoBehaviour {
 
 			OnUiToggle (_uiVisible);
 			_uiVisible = !_uiVisible;
+
+		}
+
+		if (Input.GetKeyUp (KeyCode.R)) {
+
+			SceneManager.LoadScene (0);
 
 		}
 

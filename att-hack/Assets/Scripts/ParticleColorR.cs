@@ -14,7 +14,7 @@ public class ParticleColorR : MonoBehaviour, IOutputModule {
 
 	}
 
-	public void SubscribeToInput (Knob input) {
+	public void SubscribeToInput (IInputModule input) {
 
 		input.OnValueChange += UpdateParticleMaterialR;
 

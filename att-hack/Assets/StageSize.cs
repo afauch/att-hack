@@ -6,7 +6,7 @@ public class StageSize : MonoBehaviour, IOutputModule {
 
 	public GameObject _stage;
 
-	public void SubscribeToInput (Knob input) {
+	public void SubscribeToInput (IInputModule input) {
 
 		input.OnValueChange += UpdateStageSize;
 

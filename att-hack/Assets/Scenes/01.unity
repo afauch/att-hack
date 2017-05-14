@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.8555318, g: 0.7851525, b: 0.30554238, a: 1}
+  m_IndirectSpecularColor: {r: 0.6368955, g: 0.808603, b: 0.38166085, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3511,6 +3511,7 @@ GameObject:
   - component: {fileID: 730861420}
   - component: {fileID: 730861419}
   - component: {fileID: 730861418}
+  - component: {fileID: 730861422}
   m_Layer: 0
   m_Name: Velocity
   m_TagString: Untagged
@@ -3585,6 +3586,17 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
+--- !u!114 &730861422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730861416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b66f1d2b4e241d2aa5dc4d78c4275d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &742302015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,6 +3610,7 @@ GameObject:
   - component: {fileID: 742302020}
   - component: {fileID: 742302018}
   - component: {fileID: 742302017}
+  - component: {fileID: 742302019}
   m_Layer: 0
   m_Name: ParticleSize
   m_TagString: Untagged
@@ -3646,6 +3659,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b2943828bd64a9b80a33f26d961663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &742302019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 742302015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b44cdf5c2bc4b58921c95fcafa3672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _board: {fileID: 1770757948}
 --- !u!114 &742302020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6161,6 +6186,7 @@ GameObject:
   - component: {fileID: 1325839583}
   - component: {fileID: 1325839582}
   - component: {fileID: 1325839581}
+  - component: {fileID: 1325839585}
   m_Layer: 0
   m_Name: ParticleWeight
   m_TagString: Untagged
@@ -6235,6 +6261,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
+--- !u!114 &1325839585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325839579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7864f3e8517404c27ad425c3c1c32a86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _board: {fileID: 1770757948}
 --- !u!1 &1335831542
 GameObject:
   m_ObjectHideFlags: 0
@@ -9463,7 +9501,6 @@ GameObject:
   - component: {fileID: 2077881466}
   - component: {fileID: 2077881468}
   - component: {fileID: 2077881467}
-  - component: {fileID: 2077881469}
   m_Layer: 0
   m_Name: icoso
   m_TagString: Untagged
@@ -9526,18 +9563,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2077881465}
   m_Mesh: {fileID: 4300000, guid: 60adf3efd463340c08591fc1aa85b8f4, type: 3}
---- !u!114 &2077881469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2077881465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b44cdf5c2bc4b58921c95fcafa3672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _board: {fileID: 0}
 --- !u!1 &2114144983
 GameObject:
   m_ObjectHideFlags: 0

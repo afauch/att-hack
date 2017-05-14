@@ -67,7 +67,7 @@ public class Note : MonoBehaviour {
 		if (_board._velocityToWeight) {
 			Rigidbody r = _board._particlePrefab.GetComponent<Rigidbody> ();
 			r.mass = Mathf.Lerp (0.01f, 1000.0f, velocity);
-			r.drag = Mathf.Lerp (100.0f, 0.0f, velocity);
+			r.drag = Mathf.Lerp (10.0f, 0.0f, velocity);
 		}
 			
 		// Instantiate
