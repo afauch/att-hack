@@ -43,7 +43,7 @@ public class Note : MonoBehaviour {
 		if (_midiChannel == channel && note == _note) {
 
 			// Debug.Log (string.Format ("Channel {0} and Note {1} were played", channel, note));
-			InstantiateNote(_board._prefab, channel, note, velocity);
+			InstantiateNote(_board._particlePrefab, channel, note, velocity);
 
 		}
 
@@ -51,9 +51,38 @@ public class Note : MonoBehaviour {
 
 	private void InstantiateNote(GameObject prefab, MidiChannel channel, int note, float velocity) {
 
-		GameObject g = GameObject.Instantiate(prefab, _gameObject.transform.position, _gameObject.transform.rotation);
+
+		// Velocity to Scale
+		if (_board._velocityToSize) {
+			_board._particlePrefab.transform.localScale = new Vector3 (velocity, velocity, velocity);
+		}
+
+		// Note to Scale
+		if (_board._noteToScale) {
+			float scale = ((128.0f - (float)_note) / 128.0f);
+			_board._particlePrefab.transform.localScale = new Vector3 (scale, scale, scale);
+		}
+
+		// Velocity to Weight
+		if (_board._velocityToWeight) {
+			Rigidbody r = _board._particlePrefab.GetComponent<Rigidbody> ();
+			r.mass = Mathf.Lerp (0.01f, 1000.0f, velocity);
+			r.drag = Mathf.Lerp (100.0f, 0.0f, velocity);
+		}
+			
+		// Instantiate
+		GameObject g = GameObject.Instantiate(_board._particlePrefab, gameObject.transform.position, Quaternion.identity);
+		g.transform.SetParent (_board.gameObject.transform);
+//
+//		// Velocity to Opacity
+//		if (_board._velocityToOpacity) {
+//			Renderer r = g.GetComponent<Renderer> ();
+//			Material m = r.material;
+//			m.color = new Color (m.color.r, m.color.g, m.color.b, velocity);
+//		}
 
 	}
+
 
 
 }

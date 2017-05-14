@@ -82,7 +82,7 @@ public class IoConnector : MonoBehaviour {
 
 		} else {
 
-			print ("NOT A NODE");
+			// print ("NOT A NODE");
 			if (_startSelected) {
 				DestroyLine ();
 			}
@@ -112,7 +112,7 @@ public class IoConnector : MonoBehaviour {
 
 		} else {
 
-			Debug.Log ("Not a valid input/output");
+			// Debug.Log ("Not a valid input/output");
 			DestroyLine ();
 
 		}
@@ -126,7 +126,7 @@ public class IoConnector : MonoBehaviour {
 		_tempEndNode = g;
 		_tempEndObject = g.transform.parent.gameObject;
 
-		print ("SELECT END CALLED");
+		// print ("SELECT END CALLED");
 
 		_tempLine.EndLine (g);
 		if (CheckValidEndConnection (_tempStartObject, _tempEndObject)) {
