@@ -21,7 +21,7 @@ public class IoConnection {
 	public void Init () {
 
 		// Register the output for the input's event listeners
-		_output.GetComponent<LightIntensity>().SubscribeToInput(_input.GetComponent<Knob>());
+		_output.GetComponent<IOutputModule>().SubscribeToInput(_input.GetComponent<Knob>());
 
 	}
 
