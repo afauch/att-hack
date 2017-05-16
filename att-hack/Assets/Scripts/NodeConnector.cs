@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class NodeConnector : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public List<IoConnection> _connections;
+
+	public void Start () {
+
+		_connections = new List<IoConnection> ();
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void RemoveAllConnections() {
+
+		// On Destroy, remove all connections
+		foreach (IoConnection i in _connections) {
+			i.RemoveConnection ();
+			// _connections.Remove (i);
+		}
+
 	}
+
 }

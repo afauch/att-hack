@@ -6,6 +6,8 @@ public class IoConnection {
 
 	public GameObject _input;
 	public GameObject _output;
+	public NodeConnector _inputNode;
+	public NodeConnector _outputNode;
 	private IoLine _ioLine;
 
 	public IoConnection (GameObject input, GameObject output, IoLine ioLine) {
@@ -33,6 +35,12 @@ public class IoConnection {
 		_input.GetComponent<Hover> ().OnMove += OnMove;
 		_output.GetComponent<Hover> ().OnMove += OnMove;
 
+		// Add the NodeConnectors
+		_inputNode = _input.GetComponent<UiComponent>()._nodeConnector;
+		_inputNode._connections.Add (this);
+
+		_outputNode = _output.GetComponent<UiComponent> ()._nodeConnector;
+		_outputNode._connections.Add (this);
 
 	}
 
@@ -40,6 +48,23 @@ public class IoConnection {
 	public void OnMove (GameObject g) {
 
 		_ioLine.UpdateLinePositions ();
+
+	}
+
+	public void RemoveConnection () {
+
+		// Remove Listeners
+		_output.GetComponent<IOutputModule>().UnsubscribeFromInput(_input.GetComponent<IInputModule>());
+
+		_input.GetComponent<DragObject>().OnMove -= OnMove;
+		_output.GetComponent<DragObject>().OnMove -= OnMove;
+		_input.GetComponent<Hover> ().OnMove -= OnMove;
+		_output.GetComponent<Hover> ().OnMove -= OnMove;
+
+		// Delete Line
+		GameObject.Destroy(_ioLine);
+		GameObject.Destroy(_ioLine._lineObject);
+
 
 	}
 

@@ -27,6 +27,7 @@ public interface IOutputModule {
 	// Any Output module must have an implementation
 	// for SubscribeToInput
 	void SubscribeToInput(IInputModule input);
+	void UnsubscribeFromInput(IInputModule input);
 
 
 }

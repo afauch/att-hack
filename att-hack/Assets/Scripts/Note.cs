@@ -73,6 +73,9 @@ public class Note : MonoBehaviour {
 		// Instantiate
 		GameObject g = GameObject.Instantiate(_board._particlePrefab, gameObject.transform.position, Quaternion.identity);
 		g.transform.SetParent (_board.gameObject.transform);
+		g.GetComponent<Renderer>().material = new Material(_board._particleMaterial);
+
+
 //
 //		// Velocity to Opacity
 //		if (_board._velocityToOpacity) {

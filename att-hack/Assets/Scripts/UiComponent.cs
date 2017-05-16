@@ -8,6 +8,7 @@ public class UiComponent : MonoBehaviour {
 	private Color[] _referenceLineColors;
 	private IoLine[] lines;
 
+	public NodeConnector _nodeConnector;
 	private Material _linesSharedMaterial;
 	private Color _linesReferenceColor;
 
@@ -22,6 +23,8 @@ public class UiComponent : MonoBehaviour {
 		_lerpTime = StateManager._instance._lerpTime;
 
 		_randomOffset = Random.Range (0.0f,0.3f);
+
+		_nodeConnector = GetComponentInChildren<NodeConnector> ();
 		
 	}
 

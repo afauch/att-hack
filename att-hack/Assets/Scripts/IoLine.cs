@@ -9,7 +9,7 @@ public class IoLine : MonoBehaviour {
 	private Color _color;
 	public Material _material;
 
-	private GameObject _lineObject;
+	[HideInInspector]public GameObject _lineObject;
 	private Vector3 _prevPosition;
 
 	private GameObject _start;

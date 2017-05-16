@@ -40,8 +40,8 @@ public class Board : MonoBehaviour {
 				note.transform.position = gameObject.transform.position + new Vector3 (i % _spacing, i / _spacing, 0);
 				break;
 			case Format.Line:
-				int offset = i - (128 / 2);
-				note.transform.position = gameObject.transform.position + new Vector3 (offset + (i *_spacing), 0, 0);
+				float offset = (_spacing * i)-((128/2)*_spacing);
+				note.transform.position = gameObject.transform.position + new Vector3 (offset, 0, 0);
 				break;
 			default:
 				note.transform.position = Vector3.zero;

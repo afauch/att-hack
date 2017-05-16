@@ -42,8 +42,14 @@ public class IoConnector : MonoBehaviour {
 
 		// Temporary input module
 		if (Input.GetMouseButtonDown (0)) {
-			OnClick();
+
+			if (Input.GetKey (KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt)) { 
+				OnAltClick ();
+			} else {
+				OnClick ();
+			}
 		}
+			
 
 	}
 
@@ -64,6 +70,21 @@ public class IoConnector : MonoBehaviour {
 		}
 	}
 
+	// Alt click removes node connections
+	private void OnAltClick() {
+
+		float distance = 50.0f; // this might need to be tweaked
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+		RaycastHit hit;
+		if (Physics.Raycast (ray, out hit, distance)) {
+			if (hit.transform.gameObject.CompareTag ("Node")) {
+				SelectionInteraction._instance.Play (hit.transform.gameObject);
+				// Remove the connections from this Node
+				hit.transform.gameObject.GetComponent<NodeConnector> ().RemoveAllConnections ();
+			}
+		}
+
+	}
 
 	private void OnSelect(GameObject g) {
 
