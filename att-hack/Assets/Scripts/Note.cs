@@ -63,6 +63,12 @@ public class Note : MonoBehaviour {
 			r.mass = Mathf.Lerp (0.01f, 1000.0f, velocity);
 			r.drag = Mathf.Lerp (10.0f, 0.0f, velocity);
 		}
+
+		// Velocity to Bounce
+		if (_board._velocityToWeight) {
+			Collider c = _board._particlePrefab.GetComponent<Collider> ();
+			c.material.bounciness = Mathf.Lerp(0.0f, 1.0f, velocity);
+		}
 			
 		// Instantiate
 		GameObject g = GameObject.Instantiate(_board._particlePrefab, gameObject.transform.position, Quaternion.identity);

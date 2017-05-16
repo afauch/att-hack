@@ -20,6 +20,8 @@ public class Board : MonoBehaviour {
 	public bool _velocityToColor;
 	public bool _velocityToOpacity;
 	public bool _velocityToWeight;
+	public bool _velocityToBounce;
+	public bool _noteToBounce;
 	public bool _noteToScale;
 	public bool _noteToWeight;
 	#endregion
