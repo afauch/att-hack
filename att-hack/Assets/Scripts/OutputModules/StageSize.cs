@@ -22,7 +22,7 @@ public class StageSize : MonoBehaviour, IOutputModule {
 	void UpdateStageSize(float value) {
 
 		// _stage.transform.localScale = new Vector3 (Mathf.Lerp(0.0f,500.0f,value), 1.0f, Mathf.Lerp(0.0f,500.0f,value));
-		StartCoroutine(LerpHelper.LerpScaleWithEasing(_stage,_stage.transform.lossyScale,new Vector3 (Mathf.Lerp(0.0f,500.0f,value), 1.0f, Mathf.Lerp(0.0f,500.0f,value)),0.2f,"Linear", false, 0.0f));
+		StartCoroutine(LerpHelper.LerpScaleWithEasing(_stage,_stage.transform.lossyScale,new Vector3 (Mathf.Lerp(0.0f,20.0f,value), Mathf.Lerp(0.0f,2.0f,value), Mathf.Lerp(0.0f,20.0f,value)),0.2f,"Linear", false, 0.0f));
 
 	}
 

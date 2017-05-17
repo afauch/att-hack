@@ -27,7 +27,7 @@ public class StageSpin : MonoBehaviour, IOutputModule {
 
 	void UpdateStageRotation(float value) {
 
-		_rotate.rotationRate = new Vector3 (0.0f, Mathf.Lerp(0.0f, 10.0f, value) , 0.0f);
+		_rotate._rotationRate = new Vector3 (0.0f, Mathf.Lerp(0.0f, 10.0f, value) , 0.0f);
 
 	}
 

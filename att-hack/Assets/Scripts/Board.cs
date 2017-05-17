@@ -6,6 +6,7 @@ public class Board : MonoBehaviour {
 
 	public GameObject _particlePrefab;
 	public Material _particleMaterial;
+	public Handle _handle;
 
 	#region BoardParams
 	// there's a better way to do this:

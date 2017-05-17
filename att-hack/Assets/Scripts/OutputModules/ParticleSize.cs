@@ -8,42 +8,21 @@ public class ParticleSize : MonoBehaviour, IOutputModule {
 
 	public void SubscribeToInput(IInputModule input) {
 
-		// Is this a Knob? Subscribe to Input
-		if(input._inputType == InputType.Knob)
-			input.OnValueChange += SetBoardParticleSize;
-
-		// If it's Velocity, toggle the Board bool
-		// TODO: Determine whether this is valid code
-		if(input._inputType == InputType.Velocity)
-			SetVelocityToSize(true);
+		input.OnValueChange += SetBoardParticleSize;
 
 	}
 
 
 	public void UnsubscribeFromInput (IInputModule input) {
 
-
-		// Is this a Knob? Unsubscribe from Input
-		if(input._inputType == InputType.Knob)
-			input.OnValueChange -= SetBoardParticleSize;
-
-		// If it's Velocity, toggle the Board bool
-		if(input._inputType == InputType.Velocity)
-			SetVelocityToSize(false);
-
-
-	}
-
-
-	private void SetVelocityToSize(bool activate) {
-
-		_board._velocityToSize = activate;
+		input.OnValueChange -= SetBoardParticleSize;
 
 	}
 
 	private void SetBoardParticleSize(float value) {
 
-		_board._particlePrefab.transform.localScale = new Vector3 (value, value, value);
+		float scale = Mathf.Lerp (0.05f, 2.0f, value);
+		_board._particlePrefab.transform.localScale = new Vector3 (scale, scale, scale);
 
 	}
 

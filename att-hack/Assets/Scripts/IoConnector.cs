@@ -36,6 +36,9 @@ public class IoConnector : MonoBehaviour {
 
 		_connections = new List<IoConnection> ();
 
+		// Make sure _material is set to the correct color
+		_lineMaterial.color = _lineColor;
+
 	}
 
 	void Update () {

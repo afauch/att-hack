@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Rotate : MonoBehaviour {
 
-	public Vector3 rotationRate;
+	public Vector3 _rotationRate;
+	public bool _lookAtCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +14,11 @@ public class Rotate : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 	
-		gameObject.transform.Rotate (rotationRate);
+		if (_lookAtCamera) {
+			gameObject.transform.LookAt (Camera.main.transform);
+		} else {
+			gameObject.transform.Rotate (_rotationRate);
+		}
 
 	}
 }

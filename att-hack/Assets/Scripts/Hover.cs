@@ -25,8 +25,7 @@ public class Hover : MonoBehaviour {
 		_offset = Random.Range(0.0f,1.0f);
 		_y0 = transform.position.y;
 
-		// Turn off hovering if we're dragging
-		this.gameObject.GetComponent<DragObject>().OnMove += OnDrag;
+		InitDragSubscriptions ();
 
 		_isBeingDragged = false;
 
@@ -54,6 +53,23 @@ public class Hover : MonoBehaviour {
 		if (Input.GetMouseButtonUp (0)) {
 			_isBeingDragged = false;
 		}
+
+	}
+
+	void InitDragSubscriptions () {
+
+		// This subscription means we'll turn off hovering if this gameobject is being dragged
+		this.gameObject.GetComponent<DragObject>().OnMove += OnDrag;
+
+		// This subscription means we'll turn off hovering if a parent object is being dragged
+		var uiComponent = this.gameObject.GetComponent<UiComponent>();
+
+		if (uiComponent != null && uiComponent._handle != null) {
+			// Subscribe to the handle's OnMove
+			uiComponent._handle.GetComponent<DragObject>().OnMove += OnDrag;
+
+		}
+
 
 	}
 
