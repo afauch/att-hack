@@ -9,8 +9,8 @@ public class BoardManager : MonoBehaviour {
 
 	public List<Board> _boards;
 	[HideInInspector] public int _boardCount;
-	public Format _defaultFormat = Format.Line;
-	public float _defaultSpacing = 1;
+	public Format _defaultFormat;
+	public float _defaultSpacing;
 	public GameObject _defaultHandle;
 	public GameObject _paramsRoot;
 	public float _defaultYHeight;
