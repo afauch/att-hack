@@ -76,15 +76,30 @@ public class Note : MonoBehaviour {
 			Collider c = _board._particlePrefab.GetComponent<Collider> ();
 			c.material.bounciness = Mathf.Lerp(0.0f, 1.0f, velocity);
 		}
-			
+
+
 		// Instantiate
 		GameObject g = GameObject.Instantiate(_board._particlePrefab, gameObject.transform.position, Quaternion.identity);
+		SetScale (g);
+		SetWeight (g);
 		// g.transform.SetParent (_board.gameObject.transform);
 		g.GetComponent<Renderer>().material = new Material(_board._particleMaterial);
 
 
 	}
 
+	void SetScale(GameObject g) {
 
+		g.transform.localScale = _board._instantiationScale;
+
+	}
+
+	void SetWeight(GameObject g) {
+
+		Rigidbody r = g.GetComponent<Rigidbody> ();
+		r.mass = _board._instantiationMass;
+		r.drag = _board._instantiationDrag;
+
+	}
 
 }

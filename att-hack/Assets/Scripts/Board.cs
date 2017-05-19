@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MidiJack;
 
 public class Board : MonoBehaviour {
 
@@ -16,19 +17,25 @@ public class Board : MonoBehaviour {
 	// and then assign them as modifiers
 
 	public int _channel;
+	public MidiJack.MidiChannel _midiChannel;
 	public Format _format;
 	public float _spacing;
 
-	public bool _velocityToSize;
-	public bool _velocityToColor;
-	public bool _velocityToOpacity;
-	public bool _velocityToWeight;
-	public bool _velocityToBounce;
-	public bool _noteToBounce;
-	public bool _noteToScale;
-	public bool _noteToWeight;
+	[HideInInspector]public bool _velocityToSize;
+	[HideInInspector]public bool _velocityToColor;
+	[HideInInspector]public bool _velocityToOpacity;
+	[HideInInspector]public bool _velocityToWeight;
+	[HideInInspector]public bool _velocityToBounce;
+	[HideInInspector]public bool _noteToBounce;
+	[HideInInspector]public bool _noteToScale;
+	[HideInInspector]public bool _noteToWeight;
 	#endregion
 
+	#region InstantiationParameters
+	[HideInInspector]public Vector3 _instantiationScale;
+	[HideInInspector]public float _instantiationMass;
+	[HideInInspector]public float _instantiationDrag;
+	#endregion
 	public List<Note> _notes;
 
 	void Awake () {
@@ -71,8 +78,16 @@ public class Board : MonoBehaviour {
 
 			_notes.Add (n);
 
-		}
+			// Initialize instantiation parameters
+			_instantiationScale = _particlePrefab.transform.localScale;
+			Rigidbody r = _particlePrefab.GetComponent<Rigidbody> ();
+			_instantiationMass = r.mass;
+			_instantiationDrag = r.drag;
 
+			_midiChannel = (MidiChannel)(_channel - 1);
+
+		}
+			
 	}
 
 }

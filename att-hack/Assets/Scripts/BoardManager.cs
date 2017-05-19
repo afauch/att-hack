@@ -18,8 +18,6 @@ public class BoardManager : MonoBehaviour {
 	public GameObject _defaultParticlePrefab;
 	public Material _defaultParticleMaterial;
 
-
-
 	void Awake () {
 
 		_instance = this;
@@ -49,8 +47,9 @@ public class BoardManager : MonoBehaviour {
 		newBoard._channel = midiChannelInt;
 		newBoard._format = _defaultFormat;
 		newBoard._spacing = _defaultSpacing;
+		Material newBoardParticleMaterial = new Material (_defaultParticleMaterial);
 		newBoard._particlePrefab = _defaultParticlePrefab;
-		newBoard._particleMaterial = _defaultParticleMaterial;
+		newBoard._particleMaterial = newBoardParticleMaterial;
 
 		// Add a Root Component
 		AddRoot(newBoard);
@@ -69,8 +68,6 @@ public class BoardManager : MonoBehaviour {
 
 	public void DestroyBoard (Board board) {
 
-		print ("DestroyBoard called on this board: " + board.gameObject.name);
-
 		// Destroy all the notes
 		foreach (Note n in board._notes) {
 			n.DestroyNote ();
@@ -79,15 +76,10 @@ public class BoardManager : MonoBehaviour {
 
 		// Destroy the BoardIOs and unsubscribe from all events
 		BoardIO thisBoardIo = BoardIOManager._instance._boardIoDictionary[board];
-		print ("thisBoardIo is: " + thisBoardIo.gameObject.name);
 		BoardIOManager._instance.DestroyBoardIO (thisBoardIo);
-		print ("thisBoardIo is now: " + thisBoardIo.gameObject.name);
 		BoardIOManager._instance._boardIoDictionary.Remove (board);
-		print ("root about to destroy is : " + board._root.gameObject.name);
 		GameObject.Destroy (board._root);
-		print ("handle about to destroy is : " + board._handle.gameObject.name);
 		GameObject.Destroy (board._handle.gameObject);
-		print ("boarda about about to destroy is : " + board.gameObject.name);
 		GameObject.Destroy (board.gameObject);
 
 	}

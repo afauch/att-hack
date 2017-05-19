@@ -35,7 +35,7 @@ public class Velocity : MonoBehaviour, IInputModule {
 		if (OnValueChange != null) {
 			// then call OnValueChange which will populate value to all subscribers
 
-			if ((int)channel == _board._channel) {
+			if (channel == _board._midiChannel) {
 
 				OnValueChange (velocity);
 

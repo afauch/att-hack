@@ -32,7 +32,7 @@ public class Pitch : MonoBehaviour, IInputModule {
 	private void OnNoteOn(MidiChannel channel, int note, float velocity) {
 
 		if (OnValueChange != null) {
-			if ((int)channel == _board._channel) {
+			if (channel == _board._midiChannel) {
 				// then call OnValueChange which will populate value ti all subscribers
 				OnValueChange ((float)(note / 128));
 			}

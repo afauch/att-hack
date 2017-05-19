@@ -22,7 +22,7 @@ public class BoardIOManager : MonoBehaviour {
 	public void AddBoardIO(Board board) {
 
 		// Instantiate the prefab
-		GameObject newBoardIoGameObject = GameObject.Instantiate(_boardIoPrefab, _boardIoRoot.transform.position, Quaternion.identity, _boardIoRoot.transform);
+		GameObject newBoardIoGameObject = GameObject.Instantiate(_boardIoPrefab, _boardIoPrefab.transform.position, Quaternion.identity, _boardIoRoot.transform);
 		BoardIO newBoardIo = newBoardIoGameObject.GetComponent<BoardIO> ();
 		newBoardIo._board = board;
 		newBoardIo.Init ();

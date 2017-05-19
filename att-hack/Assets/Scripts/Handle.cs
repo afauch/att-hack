@@ -45,10 +45,8 @@ public class Handle : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit, distance)) {
-			if (_isBoardHandle) {
+			if (hit.collider.gameObject == this.gameObject && _isBoardHandle) {
 				SelectionInteraction._instance.Play (hit.transform.gameObject);
-				// Remove the connections from this Node
-				// TODO: Destroy this board
 				DestroyBoard();
 			}
 		}

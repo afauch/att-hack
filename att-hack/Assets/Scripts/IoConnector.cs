@@ -39,6 +39,10 @@ public class IoConnector : MonoBehaviour {
 		// Make sure _material is set to the correct color
 		_lineMaterial.color = _lineColor;
 
+		// Subscribe to the UI toggle
+		StateManager.OnUiToggle += OnUiToggle;
+
+
 	}
 
 	void Update () {
@@ -230,6 +234,44 @@ public class IoConnector : MonoBehaviour {
 		_tempEndObject = null;
 
 	}
+
+
+	void OnUiToggle(bool uiVisible) {
+
+		if (uiVisible) {
+
+			// if it's visible, then hide it
+			Hide ();
+
+		} else {
+
+			// if it's hiddne, then show it
+			Show ();
+
+		}
+
+	}
+
+	// Hide the lines
+	void Hide () {
+
+//		_linesSharedMaterial = _lineMaterial;
+//		_linesReferenceColor = _linesSharedMaterial.color;
+
+		StartCoroutine (LerpHelper.ColorFade (_lineMaterial, Color.clear, StateManager._instance._lerpTime, "Quintic", 0.0f));
+
+	}
+		
+	void Show () {
+
+		print ("Should show");
+
+		// print ("Line reference color is : " + _linesReferenceColor);
+		StartCoroutine (LerpHelper.ColorFade (_lineMaterial, _lineColor, StateManager._instance._lerpTime, "Quintic", (0.7f * StateManager._instance._lerpTime)));
+
+	}
+
+
 
 
 }

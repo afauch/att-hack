@@ -22,7 +22,7 @@ public class ParticleSize : MonoBehaviour, IOutputModule {
 	private void SetBoardParticleSize(float value) {
 
 		float scale = Mathf.Lerp (0.05f, 2.0f, value);
-		_board._particlePrefab.transform.localScale = new Vector3 (scale, scale, scale);
+		_board._instantiationScale = new Vector3 (scale, scale, scale);
 
 	}
 

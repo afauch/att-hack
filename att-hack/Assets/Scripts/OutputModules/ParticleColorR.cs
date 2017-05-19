@@ -29,7 +29,7 @@ public class ParticleColorR : MonoBehaviour, IOutputModule {
 
 	void UpdateParticleMaterialR(float value) {
 
-		print ("Updating Material");
+		// print ("Updating Material");
 
 		Color currentColor = _material.GetColor ("_EmissionColor");
 		_material.SetColor("_EmissionColor", new Color(value, currentColor.g, currentColor.b));
