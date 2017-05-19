@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleSize : MonoBehaviour, IOutputModule {
 
-	public Board _board;
+	public Board _board { get; set; }
 
 	public void SubscribeToInput(IInputModule input) {
 

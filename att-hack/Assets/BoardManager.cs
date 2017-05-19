@@ -58,8 +58,8 @@ public class BoardManager : MonoBehaviour {
 		// Add Handle Prefab
 		AddHandle(newBoard);
 
-		// TODO: Add the Board Params Controls, and link them to this Board
-
+		// Add the BoardIO Controls, and link them to this Board
+		BoardIOManager._instance.AddBoardIO(newBoard);
 
 		// Initialize Board
 		newBoard.Init();

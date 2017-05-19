@@ -6,6 +6,7 @@ using MidiJack;
 public class Pitch : MonoBehaviour, IInputModule {
 
 	public InputType _inputType { get; set; }
+	public Board _board { get; set; }
 	public event ValueChange OnValueChange;
 
 	void Awake () {
@@ -24,8 +25,10 @@ public class Pitch : MonoBehaviour, IInputModule {
 	private void OnNoteOn(MidiChannel channel, int note, float velocity) {
 
 		if (OnValueChange != null) {
-			// then call OnValueChange which will populate value ti all subscribers
-			OnValueChange ((float)(note/128));
+			if ((int)channel == _board._channel) {
+				// then call OnValueChange which will populate value ti all subscribers
+				OnValueChange ((float)(note / 128));
+			}
 		}
 
 	}

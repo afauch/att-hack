@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SkyboxColorB : MonoBehaviour, IOutputModule {
 
+	// Just implement for the interface - better way of doing this?
+	public Board _board { get; set; }
+
 	private Material _skybox;
 	[SerializeField] private float _shadeFactor;
 

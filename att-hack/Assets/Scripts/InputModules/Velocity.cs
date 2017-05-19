@@ -6,6 +6,7 @@ using MidiJack;
 public class Velocity : MonoBehaviour, IInputModule {
 
 	public InputType _inputType { get; set; }
+	public Board _board { get; set; }
 	public event ValueChange OnValueChange;
 
 	void Awake () {
@@ -24,8 +25,14 @@ public class Velocity : MonoBehaviour, IInputModule {
 	private void OnNoteOn(MidiChannel channel, int note, float velocity) {
 
 		if (OnValueChange != null) {
-			// then call OnValueChange which will populate value ti all subscribers
-			OnValueChange (velocity);
+			// then call OnValueChange which will populate value to all subscribers
+
+			if ((int)channel == _board._channel) {
+
+				OnValueChange (velocity);
+
+			}
+
 		}
 
 	}

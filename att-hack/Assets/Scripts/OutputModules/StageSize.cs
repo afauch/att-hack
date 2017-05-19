@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageSize : MonoBehaviour, IOutputModule {
 
+	public Board _board { get; set; }
 	public GameObject _stage;
 
 	public void SubscribeToInput (IInputModule input) {

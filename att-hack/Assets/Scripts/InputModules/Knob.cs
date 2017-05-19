@@ -6,6 +6,7 @@ using MidiJack;
 public class Knob : MonoBehaviour, IInputModule {
 
 	public InputType _inputType { get; set; }
+	public Board _board { get; set; }
 
 	private const string _idLabelName = "id_label";
 	private const string _valLabelName = "val_label";

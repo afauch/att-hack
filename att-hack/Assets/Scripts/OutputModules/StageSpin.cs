@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageSpin : MonoBehaviour, IOutputModule {
 
+	public Board _board { get; set; }
 	public GameObject _stage;
 	private Rotate _rotate;
 

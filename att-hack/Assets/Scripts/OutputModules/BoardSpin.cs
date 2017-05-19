@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BoardSpin : MonoBehaviour, IOutputModule {
 
-	public GameObject _board;
 	private Rotate _rotate;
+	public Board _board { get; set; }
 
 	void Start () {
 

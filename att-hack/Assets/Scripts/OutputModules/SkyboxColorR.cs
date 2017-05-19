@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkyboxColorR : MonoBehaviour, IOutputModule {
 
+	public Board _board { get; set; }
 	private Material _skybox;
 	[SerializeField] private float _shadeFactor;
 

@@ -24,6 +24,8 @@ public enum Format {
 // Interaces
 public interface IOutputModule {
 
+	Board _board { get; set; }
+
 	// Any Output module must have an implementation
 	// for SubscribeToInput
 	void SubscribeToInput(IInputModule input);
@@ -35,6 +37,7 @@ public interface IOutputModule {
 public interface IInputModule {
 
 	InputType _inputType { get; set; }
+	Board _board { get; set; }
 
 	// Any Input Module
 	// Create an event that other modules can subscribe to when this input changes

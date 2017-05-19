@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticleColorR : MonoBehaviour, IOutputModule {
 
 	private Material _material;
-	public Board _board;
+	public Board _board { get; set; }
 
 	void Start() {
 

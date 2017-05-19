@@ -5,6 +5,7 @@ using UnityEngine;
 public class LightIntensity : MonoBehaviour, IOutputModule {
 
 	[SerializeField] private Light _light;
+	public Board _board { get; set; }
 
 	public void SubscribeToInput (IInputModule input) {
 
