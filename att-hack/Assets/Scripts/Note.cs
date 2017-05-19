@@ -23,6 +23,13 @@ public class Note : MonoBehaviour {
 
 	}
 
+	public void DestroyNote () {
+
+		// Unsubscribe from the OnNoteOnEvent
+		MidiMaster.noteOnDelegate -= OnNoteOn;
+
+	}
+
 	private void InitializeGameObject () {
 
 		_gameObject = this.gameObject;
@@ -75,14 +82,6 @@ public class Note : MonoBehaviour {
 		// g.transform.SetParent (_board.gameObject.transform);
 		g.GetComponent<Renderer>().material = new Material(_board._particleMaterial);
 
-
-//
-//		// Velocity to Opacity
-//		if (_board._velocityToOpacity) {
-//			Renderer r = g.GetComponent<Renderer> ();
-//			Material m = r.material;
-//			m.color = new Color (m.color.r, m.color.g, m.color.b, velocity);
-//		}
 
 	}
 

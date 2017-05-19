@@ -29,13 +29,15 @@ public class Board : MonoBehaviour {
 	public bool _noteToWeight;
 	#endregion
 
+	public List<Note> _notes;
+
 	void Awake () {
+
+		_notes = new List<Note> ();
 
 	}
 
 	public void Init () {
-
-		print("ROOT IS " + _root.name);
 
 		for (int i = 0; i < 128; i++) {
 
@@ -67,10 +69,10 @@ public class Board : MonoBehaviour {
 			n._gameObject = note;
 			n.InitNote ();
 
+			_notes.Add (n);
+
 		}
 
 	}
-
-
 
 }

@@ -22,6 +22,14 @@ public class Velocity : MonoBehaviour, IInputModule {
 
 	}
 
+
+	public void DestroyInput () {
+
+		// Unsubscribe
+		MidiMaster.noteOnDelegate -= OnNoteOn;
+
+	}
+
 	private void OnNoteOn(MidiChannel channel, int note, float velocity) {
 
 		if (OnValueChange != null) {

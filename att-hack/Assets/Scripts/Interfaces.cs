@@ -42,5 +42,6 @@ public interface IInputModule {
 	// Any Input Module
 	// Create an event that other modules can subscribe to when this input changes
 	event ValueChange OnValueChange;
+	void DestroyInput();
 
 }

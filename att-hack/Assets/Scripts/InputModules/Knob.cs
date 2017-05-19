@@ -43,6 +43,14 @@ public class Knob : MonoBehaviour, IInputModule {
 
 	}
 
+
+	public void DestroyInput () {
+
+		// Unsubscribe
+		MidiMaster.noteOnDelegate -= OnKnob;
+
+	}
+
 	// Takes care of GameObject initialization
 	// like labels and transforms
 	void InitializeGameObject() {
