@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class UiComponent : MonoBehaviour {
 
@@ -19,8 +20,11 @@ public class UiComponent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// Subscribe to the OnUiToggle Event
-		StateManager.OnUiToggle += OnUiToggle;
+        // Subscribe to controllers
+        GetComponent<VRTK_InteractableObject>().InteractableObjectUsed += OnUse;
+
+        // Subscribe to the OnUiToggle Event
+        StateManager.OnUiToggle += OnUiToggle;
 		_lerpTime = StateManager._instance._lerpTime;
 
 		_randomOffset = Random.Range (0.0f,0.3f);
@@ -60,5 +64,10 @@ public class UiComponent : MonoBehaviour {
 		StartCoroutine(LerpHelper.LerpScaleWithEasing (this.gameObject, this.gameObject.transform.localScale, _referenceScale, StateManager._instance._lerpTime, "Quintic", false, _randomOffset));
 
 	}
+
+    void OnUse(object o, InteractableObjectEventArgs e)
+    {
+        IoConnector._instance.OnSelect(_nodeConnector.gameObject, e.interactingObject);
+    }
 
 }

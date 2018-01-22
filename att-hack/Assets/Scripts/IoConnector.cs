@@ -17,10 +17,12 @@ public class IoConnector : MonoBehaviour {
 	private IoLine _tempLine;
 	private GameObject _tempLineObject;
 
+    public GameObject _tempController;                                      // This is the controller currently being used to make the connection
+
 	private GameObject _tempInputObject;
 	private GameObject _tempOutputObject;
 
-	private bool _startSelected;
+	private bool _startSelected;                                            // I *think* this bool indicates whether the first node has been selected or not
 
 	[Header("Connector Formatting")]
 	[SerializeField] private float _lineWidth;
@@ -47,6 +49,11 @@ public class IoConnector : MonoBehaviour {
 
 	void Update () {
 
+
+        // TODO - This needs to correctly handle 'empty' trigger clicks
+        // that should terminate the possible connection
+        // This could get tricky .... 
+
 		// Temporary input module
 		if (Input.GetMouseButtonDown (0)) {
 
@@ -61,24 +68,29 @@ public class IoConnector : MonoBehaviour {
 	}
 
 
-	// Click Handling - meat of logic is in OnSelect
-	private void OnClick() {
+	// Click Handling - meat of logic is in OnSelect.
+	public void OnClick() {
 
 		//create a ray cast and set it to the mouses cursor position in game
 		float distance = 50.0f; // this might need to be tweaked
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit, distance)) {
-			OnSelect (hit.transform.gameObject);
+
+            // A click will call 'OnSelect' and pass the selected GameObject
+			OnSelect (hit.transform.gameObject, null);
+
 		} else {
+
 			// if no hit
 			if(_startSelected)
 				DestroyLine ();
+
 		}
 	}
 
 	// Alt click removes node connections
-	private void OnAltClick() {
+	public void OnAltClick() {
 
 		float distance = 50.0f; // this might need to be tweaked
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -93,7 +105,10 @@ public class IoConnector : MonoBehaviour {
 
 	}
 
-	private void OnSelect(GameObject g) {
+	public void OnSelect(GameObject g, GameObject controller) {
+
+        Debug.Log("OnSelect called for " + g.name);
+        _tempController = controller;
 
 		// is this a node?
 		if (g.CompareTag ("Node")) {

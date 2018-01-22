@@ -9,7 +9,10 @@ public class Handle : MonoBehaviour {
 	public bool _isBoardHandle;
     private bool _isGrabbed = false;
 
-	void Awake () {
+    public delegate void Moved(GameObject g);
+    public event Moved OnHandleMove;
+
+    void Awake () {
 
 		_isBoardHandle = false;
 
@@ -18,17 +21,23 @@ public class Handle : MonoBehaviour {
 	void Start () {
 		
 		// Subscribe to the Handle's move events
-		this.GetComponent<DragObject>().OnMove += OnDrag;
+		this.GetComponent<DragObject>().OnMove += OnMove;
+
         this.GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += OnGrabbed;
         this.GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += OnUngrabbed;
 
     }
 
     // OLD: OnDrag function for mouse control
-	void OnDrag (GameObject g)
+	void OnMove (GameObject g)
     {
-		_transformToHandle.transform.position = g.transform.position;
-	}
+        // _transformToHandle.transform.position = g.transform.position;
+        // Publish the event
+        if (OnHandleMove != null)
+        {
+            OnHandleMove(this.gameObject);
+        }
+    }
 
     // VRTK Controller Handling
     private void OnGrabbed(object o, InteractableObjectEventArgs e)

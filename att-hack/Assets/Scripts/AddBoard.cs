@@ -7,10 +7,10 @@ public class AddBoard : MonoBehaviour {
 
 	public int _midiChannelInt;
 
-    // Subscribe to controller events
+    // Subscribe to interactable object 'use' event
     void Start()
     {
-
+        GetComponent<VRTK_InteractableObject>().InteractableObjectUsed += OnSelect;
     }
 
     // Update is called once per frame
@@ -18,7 +18,7 @@ public class AddBoard : MonoBehaviour {
 
 		if (Input.GetKeyDown(_midiChannelInt.ToString())) {
 
-			OnSelect (this.gameObject);
+            OnSelect();
 
 		}
 	}
@@ -26,11 +26,12 @@ public class AddBoard : MonoBehaviour {
     // On Controller Interaction
     private void OnSelect(object o, InteractableObjectEventArgs e)
     {
-        OnSelect((GameObject)o);
+        Debug.Log("Used");
+        OnSelect();
     }
 
     // not sure why I included a GameObject parameter here ... could be deleted
-    void OnSelect (GameObject g) {
+    void OnSelect () {
 
 		SelectionInteraction._instance.Play (this.gameObject);
 

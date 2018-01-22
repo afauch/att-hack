@@ -71,11 +71,9 @@ public class IoLine : MonoBehaviour {
 
 		if (_lr != null && _isDrawing) {
 
-			Vector3 mousePos = Input.mousePosition;
-			// mousePos.z = Camera.main.nearClipPlane;
-			mousePos.z = _lineObject.transform.position.z * -1;
-			Vector3 mouseWorld = Camera.main.ScreenToWorldPoint (mousePos);
-			_lr.SetPosition (1, mouseWorld);
+            // TODO - Deprecated mouse logic
+			// Vector3 mousePos = Input.mousePosition;
+			_lr.SetPosition (1, IoConnector._instance._tempController.transform.position);
 
 		}
 
