@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class AddBoard : MonoBehaviour {
 
 	public int _midiChannelInt;
 
-	// Update is called once per frame
-	void Update () {
+    // Subscribe to controller events
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 
 		if (Input.GetKeyDown(_midiChannelInt.ToString())) {
 
@@ -16,8 +23,14 @@ public class AddBoard : MonoBehaviour {
 		}
 	}
 
+    // On Controller Interaction
+    private void OnSelect(object o, InteractableObjectEventArgs e)
+    {
+        OnSelect((GameObject)o);
+    }
 
-	void OnSelect (GameObject g) {
+    // not sure why I included a GameObject parameter here ... could be deleted
+    void OnSelect (GameObject g) {
 
 		SelectionInteraction._instance.Play (this.gameObject);
 

@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using VRTK;
 using UnityEngine;
 
 public class Handle : MonoBehaviour {
 
 	public GameObject _transformToHandle;
 	public bool _isBoardHandle;
+    private bool _isGrabbed = false;
 
 	void Awake () {
 
@@ -17,16 +19,33 @@ public class Handle : MonoBehaviour {
 		
 		// Subscribe to the Handle's move events
 		this.GetComponent<DragObject>().OnMove += OnDrag;
+        this.GetComponent<VRTK_InteractableObject>().InteractableObjectGrabbed += OnGrabbed;
+        this.GetComponent<VRTK_InteractableObject>().InteractableObjectUngrabbed += OnUngrabbed;
 
-	}
+    }
 
-	void OnDrag (GameObject g) {
-
+    // OLD: OnDrag function for mouse control
+	void OnDrag (GameObject g)
+    {
 		_transformToHandle.transform.position = g.transform.position;
-
 	}
 
-	void Update () {
+    // VRTK Controller Handling
+    private void OnGrabbed(object o, InteractableObjectEventArgs e)
+    {
+        this.transform.SetParent(null);
+        _transformToHandle.transform.SetParent(this.transform);
+        _isGrabbed = true;
+    }
+    private void OnUngrabbed(object o, InteractableObjectEventArgs e)
+    {
+        _transformToHandle.transform.SetParent(null);
+        this.transform.SetParent(_transformToHandle.transform);
+        _isGrabbed = false;
+    }
+
+    void Update ()
+    {
 
 		// Temporary input module
 		if (Input.GetMouseButtonDown (0)) {

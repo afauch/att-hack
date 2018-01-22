@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VRTK;
 
 public class StateManager : MonoBehaviour {
 
@@ -22,15 +23,14 @@ public class StateManager : MonoBehaviour {
 
 		_uiVisible = true;
 
+
 	}
 
 	void Update () {
 
 		if (Input.GetKeyUp (KeyCode.Space) && OnUiToggle != null) {
 
-			OnUiToggle (_uiVisible);
-			_uiVisible = !_uiVisible;
-
+            ToggleUi();
 		}
 
 		if (Input.GetKeyUp (KeyCode.R)) {
@@ -40,5 +40,11 @@ public class StateManager : MonoBehaviour {
 		}
 
 	}
+
+    public void ToggleUi()
+    {
+        OnUiToggle(_uiVisible);
+        _uiVisible = !_uiVisible;
+    }
 
 }
