@@ -21,6 +21,7 @@ public class UiComponent : MonoBehaviour {
 	void Start () {
 
         // Subscribe to controllers
+        Debug.Log(this.gameObject.name);
         GetComponent<VRTK_InteractableObject>().InteractableObjectUsed += OnUse;
 
         // Subscribe to the OnUiToggle Event
